@@ -37,9 +37,11 @@ namespace DeisgnPatterns_SteveSmith
     //}
     public class Factory
     {
-        private static Factory _factory;
-        private static Object _classLock = typeof(Factory);
-        private long _wipMoves;
+        private static Factory _factory;                                                // konstruktor obiektu _factory
+        private static Object _classLock = typeof(Factory);                             // konstruktor obiektu _classLock   typu factory 
+        private long _wipMoves;                                                         // zmienna _WipMoves -- work in progress -- postępy w pracy
+        
+        //funkcja 
         private Factory()
         {
             _wipMoves = 0;
@@ -59,8 +61,10 @@ namespace DeisgnPatterns_SteveSmith
 
         public void RecordWipMove()
         {
-
-            //zadanie
+            lock (_classLock)
+            {
+                _wipMoves++
+            }
         }
     }
 }
